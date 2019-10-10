@@ -70,7 +70,8 @@ function resetValue(){
 function storeNum(){
     storeVal = document.getElementById("entry").value;
     document.getElementById("entry").value = "stored";
-    newVal = null;
+    //to make sure you can keep operating stored value
+    newVal = storeVal;
 }
 
 function printNum(){
