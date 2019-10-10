@@ -10,6 +10,8 @@ function numButPress(num){
     if(newVal !== null){
         if(newVal == '0' && num == 0){
             newVal = '0';
+        }if(newVal == '0' && decimalclicked == false){
+            newVal = num.toString();
         }else{
             newVal = newVal.concat(num.toString());
         }
