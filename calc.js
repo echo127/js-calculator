@@ -34,17 +34,23 @@ function decimalChecker(){
 function errorMessage(){
     document.getElementById("entry").value = "ERROR";
     resetValue();
+    resultVal = null;
 }
 
 function mathButPress(opr){
     decimalclicked = false;
     operator = opr;
-    preVal = newVal;
-    newVal = null;
+    if(newVal == null){
+        preVal = resultVal;
+    }else{
+        preVal = newVal;
+        newVal = null;
+    }
 }
 
 function clearButPress(){
     resetValue();
+    resultVal = null;
     document.getElementById("entry").value = "0";
 }
 
@@ -52,16 +58,16 @@ function resetValue(){
     preVal = null;
     newVal = null;
     operator = null;
-    resultVal = null;
     storeVal = null;
     decimalclicked = false;
 }
 
 function storeNum(){
+    storeVal = newVal;
 }
 
 function printNum(){
-    
+
 }
 
 function equalButPress(){
@@ -82,9 +88,9 @@ function equalButPress(){
                 resultVal = preVal / newVal;
                 break;   
         }
+        document.getElementById("entry").value = resultVal.toString();
+        resetValue();
     }else{
-        resultVal = "ERROR";
-    }
-    document.getElementById("entry").value = resultVal.toString();
-    resetValue();
+        errorMessage();
+    }  
 }
