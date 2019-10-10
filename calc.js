@@ -26,13 +26,13 @@ function decimalChecker(){
         decimalclicked = true;
         document.getElementById("entry").value = newVal;
     }else{
-        errorMessage();
+        errorMessage("decimal error");
     }
     
 }
 
-function errorMessage(){
-    document.getElementById("entry").value = "ERROR";
+function errorMessage(message){
+    document.getElementById("entry").value = message;
     resetValue();
     resultVal = null;
 }
@@ -58,16 +58,21 @@ function resetValue(){
     preVal = null;
     newVal = null;
     operator = null;
-    storeVal = null;
     decimalclicked = false;
 }
 
 function storeNum(){
-    storeVal = newVal;
+    storeVal = document.getElementById("entry").value;
+    newVal = null;
 }
 
 function printNum(){
-
+    if(storeVal !== null){
+        newVal = storeVal;
+        document.getElementById("entry").value = newVal;
+    }else{
+        errorMessage("no stored value");
+    }
 }
 
 function equalButPress(){
@@ -91,6 +96,6 @@ function equalButPress(){
         document.getElementById("entry").value = resultVal.toString();
         resetValue();
     }else{
-        errorMessage();
+        errorMessage("no value");
     }  
 }
