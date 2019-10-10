@@ -8,7 +8,11 @@ let decimalclicked = false;
 
 function numButPress(num){
     if(newVal !== null){
-        newVal = newVal.concat(num.toString());
+        if(newVal == '0' && num == 0){
+            newVal = '0';
+        }else{
+            newVal = newVal.concat(num.toString());
+        }
     }else{
         newVal = num.toString();
     }
@@ -63,6 +67,7 @@ function resetValue(){
 
 function storeNum(){
     storeVal = document.getElementById("entry").value;
+    document.getElementById("entry").value = "stored";
     newVal = null;
 }
 
