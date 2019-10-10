@@ -84,26 +84,31 @@ function printNum(){
 }
 
 function equalButPress(){
-    if(preVal !== null && newVal !== null && operator !== null){
-        preVal = parseFloat(preVal);
-        newVal = parseFloat(newVal);
-        switch(operator){
-            case '+':
-                resultVal = preVal + newVal;
-                break;
-            case '-':
-                resultVal = preVal - newVal;
-                break;
-            case '*':
-                resultVal = preVal * newVal;
-                break;
-            case '/':
-                resultVal = preVal / newVal;
-                break;   
-        }
-        document.getElementById("entry").value = resultVal.toString();
-        resetValue();
-    }else{
-        errorMessage("no value");
-    }  
+    preVal = parseFloat(preVal);
+    newVal = parseFloat(newVal);
+    switch(operator){
+        case '+':
+            resultVal = preVal + newVal;
+            break;
+        case '-':
+            resultVal = preVal - newVal;
+            break;
+        case '*':
+            resultVal = preVal * newVal;
+            break;
+        case '/':
+            resultVal = preVal / newVal;
+            break;
+        // If equals is hit without an operator 
+        // leave everything as is
+        default:
+            //multiple hiting on equal triger the clear function
+            if(!newVal){
+                resultVal = 0;
+            }else{
+                resultVal = newVal;
+            }
+    }
+    document.getElementById("entry").value = resultVal.toString();
+    resetValue();     
 }
